@@ -16,6 +16,8 @@
 		E9C5A6EA204278B000D7D8E9 /* ToDoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5A6E9204278B000D7D8E9 /* ToDoAppTests.swift */; };
 		E9C5A6F52042983D00D7D8E9 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5A6F42042983D00D7D8E9 /* AddTaskViewController.swift */; };
 		E9C5A6F62042983D00D7D8E9 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5A6F42042983D00D7D8E9 /* AddTaskViewController.swift */; };
+		E9C5A6F82042FC5C00D7D8E9 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5A6F72042FC5C00D7D8E9 /* TaskTableViewCell.swift */; };
+		E9C5A6F92042FC5D00D7D8E9 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5A6F72042FC5C00D7D8E9 /* TaskTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,7 @@
 		E9C5A6E9204278B000D7D8E9 /* ToDoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppTests.swift; sourceTree = "<group>"; };
 		E9C5A6EB204278B000D7D8E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9C5A6F42042983D00D7D8E9 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		E9C5A6F72042FC5C00D7D8E9 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,7 @@
 				E9C5A6D1204278B000D7D8E9 /* AppDelegate.swift */,
 				E9C5A6D3204278B000D7D8E9 /* ViewController.swift */,
 				E9C5A6F42042983D00D7D8E9 /* AddTaskViewController.swift */,
+				E9C5A6F72042FC5C00D7D8E9 /* TaskTableViewCell.swift */,
 				E9C5A6D5204278B000D7D8E9 /* Main.storyboard */,
 				E9C5A6DB204278B000D7D8E9 /* Assets.xcassets */,
 				E9C5A6DD204278B000D7D8E9 /* LaunchScreen.storyboard */,
@@ -208,6 +212,7 @@
 			files = (
 				E9C5A6D4204278B000D7D8E9 /* ViewController.swift in Sources */,
 				E9C5A6F52042983D00D7D8E9 /* AddTaskViewController.swift in Sources */,
+				E9C5A6F82042FC5C00D7D8E9 /* TaskTableViewCell.swift in Sources */,
 				E9C5A6DA204278B000D7D8E9 /* ToDoApp.xcdatamodeld in Sources */,
 				E9C5A6D2204278B000D7D8E9 /* AppDelegate.swift in Sources */,
 			);
@@ -219,6 +224,7 @@
 			files = (
 				E9C5A6EA204278B000D7D8E9 /* ToDoAppTests.swift in Sources */,
 				E9C5A6F62042983D00D7D8E9 /* AddTaskViewController.swift in Sources */,
+				E9C5A6F92042FC5D00D7D8E9 /* TaskTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

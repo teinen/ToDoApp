@@ -18,9 +18,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" editingAccessoryType="disclosureIndicator" id="AN9-fP-TZe" customClass="TaskTableViewCell" customModule="ToDoApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AN9-fP-TZe" id="rfE-4v-ElI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqI-qc-r78">
+                                            <rect key="frame" x="16" y="12" width="343" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                                <connections>
+                                    <outlet property="taskLable" destination="PqI-qc-r78" id="Ks0-bR-OW4"/>
+                                    <segue destination="D7G-Wd-dh1" kind="show" identifier="SegueEditTaskViewController" id="clt-ev-Uk2"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="ToDo List" id="uQb-TU-Tot">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="xIh-Wf-RRN"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="QVH-aH-eKn"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fcJ-Hk-Q1G">
                             <connections>
                                 <segue destination="Ma1-zR-nBT" kind="show" id="x4c-Xb-h7L"/>
@@ -97,7 +123,8 @@
                     <navigationItem key="navigationItem" title="Add ToDo" id="goW-iI-mtx">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="wY4-tk-Wr5">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="D7G-Wd-dh1" id="9ps-dL-FXs"/>
+                                <action selector="cancelButtonTapped:" destination="D7G-Wd-dh1" id="aYI-hN-WHP"/>
+                                <segue destination="IaO-H9-qYJ" kind="unwind" unwindAction="unwindWithSegue:" id="rZs-CI-pQC"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="eve-kS-pi7">
@@ -107,12 +134,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="saveButton" destination="eve-kS-pi7" id="tLc-1A-vdl"/>
                         <outlet property="taskDueDateField" destination="m8M-YN-omO" id="zRM-J3-a0z"/>
                         <outlet property="taskMemoField" destination="e2c-K8-mFK" id="ldx-rQ-YFz"/>
                         <outlet property="taskNameField" destination="Bs7-Ys-0vw" id="gk0-HU-iZc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyx-eg-oqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="IaO-H9-qYJ" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="C4m-dx-oTA">
                     <connections>
                         <action selector="tapScreen:" destination="D7G-Wd-dh1" id="T0g-7p-cIu"/>
@@ -140,7 +169,6 @@
         <!--Navigation Controller-->
         <scene sceneID="ar0-Gm-cU7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jpG-1u-4PX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ma1-zR-nBT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LV6-kP-TDT">
@@ -152,8 +180,12 @@
                         <segue destination="D7G-Wd-dh1" kind="relationship" relationship="rootViewController" id="NDK-0i-Ubg"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jpG-1u-4PX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="376"/>
+            <point key="canvasLocation" x="87" y="480"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="clt-ev-Uk2"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -2,7 +2,7 @@
 //  AddTaskViewController.swift
 //  ToDoApp
 //
-//  Created by AKIRA KANNO on 2018/02/25.
+//  Created by teinen on 2018/02/25.
 //  Copyright © 2018年 teinen. All rights reserved.
 //
 
@@ -14,6 +14,10 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskDueDateField: UIDatePicker!
     @IBOutlet weak var taskMemoField: UITextView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var task: Task?
 
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -31,6 +35,13 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
         
         taskMemoField.layer.borderColor = UIColor.gray.cgColor
         taskMemoField.layer.borderWidth = 0.5
+        
+        // If task is passed to this controller, show
+        if let task = task {
+            taskNameField.text = task.name
+            taskDueDateField.date = task.dueDate!
+            taskMemoField.text = task.memo
+        }
     }
 
     // MARK: Button Tapped Function
@@ -75,5 +86,21 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         taskNameField.text = textField.text
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Save button is unenabled duaring editing.
+        saveButton.isEnabled = false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
+    }
+    
+    // MARK: Private Methods
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty
+        let text = taskNameField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
 }
