@@ -46,7 +46,6 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="ToDo List" id="uQb-TU-Tot">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="QVH-aH-eKn"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fcJ-Hk-Q1G">
                             <connections>
                                 <segue destination="Ma1-zR-nBT" kind="show" id="x4c-Xb-h7L"/>

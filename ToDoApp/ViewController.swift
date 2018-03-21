@@ -12,7 +12,7 @@ import CoreData
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: Properties
-    @IBOutlet var taskListView: UITableView!
+    @IBOutlet weak var taskListView: UITableView!
     
     var tasks:[Task] = []
     var tasksToShow:[String] = []
@@ -21,8 +21,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
-        print("didload")
-        
         super.viewDidLoad()
         
         taskListView.dataSource = self
@@ -35,14 +33,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Reload list view
         taskListView.reloadData()
-    }
-
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        print("edit button")
-        
-        super.setEditing(editing, animated: animated)
-        
-        taskListView.setEditing(editing, animated: animated)
     }
     
     // MARK: Navigation
@@ -100,7 +90,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // Delete Task Data
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, editingStyleForRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         // Context
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
@@ -131,7 +121,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Reload taskTableView
         taskListView.reloadData()
     }
-    
     
     // MARK: CoreData function
     func fetchData() {

@@ -38,6 +38,10 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
         
         // If task is passed to this controller, show
         if let task = task {
+            // Change page title
+            self.title = "Modify ToDo"
+
+            // Set task info to each fields
             taskNameField.text = task.name
             taskDueDateField.date = task.dueDate!
             taskMemoField.text = task.memo
