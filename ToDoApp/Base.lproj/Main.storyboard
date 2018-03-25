@@ -46,6 +46,7 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="ToDo List" id="uQb-TU-Tot">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="pvn-HI-kSa"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fcJ-Hk-Q1G">
                             <connections>
                                 <segue destination="Ma1-zR-nBT" kind="show" id="x4c-Xb-h7L"/>
@@ -122,13 +123,12 @@
                     <navigationItem key="navigationItem" title="Add ToDo" id="goW-iI-mtx">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="wY4-tk-Wr5">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="D7G-Wd-dh1" id="aYI-hN-WHP"/>
                                 <segue destination="IaO-H9-qYJ" kind="unwind" unwindAction="unwindWithSegue:" id="rZs-CI-pQC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="eve-kS-pi7">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="eve-kS-pi7">
                             <connections>
-                                <action selector="saveButtonTapped:" destination="D7G-Wd-dh1" id="OdU-ws-tIu"/>
+                                <segue destination="IaO-H9-qYJ" kind="unwind" unwindAction="unwindWhenTapSaveWithSender:" id="PuK-NZ-LBc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -147,7 +147,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="989.60000000000002" y="116.49175412293854"/>
+            <point key="canvasLocation" x="235" y="118"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8AW-Wr-L7L">
@@ -181,10 +181,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpG-1u-4PX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="87" y="480"/>
+            <point key="canvasLocation" x="-290" y="500"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="clt-ev-Uk2"/>
+        <segue reference="NDK-0i-Ubg"/>
     </inferredMetricsTieBreakers>
 </document>

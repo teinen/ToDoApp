@@ -23,6 +23,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set Navigation Bar Color
+        // self.navigationController!.navigationBar.barTintColor = UIColor.cyan
+        
+        // Set data source and delegate
         taskListView.dataSource = self
         taskListView.delegate = self
     }
@@ -33,6 +37,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Reload list view
         taskListView.reloadData()
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        self.taskListView.setEditing(editing, animated: animated)
     }
     
     // MARK: Navigation
@@ -68,10 +78,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // Close add ToDo view when tap cancel button
-    @IBAction func unwind(segue: UIStoryboardSegue) {
+    @IBAction func unwindWhewnTapCancel(segue: UIStoryboardSegue) {
         
     }
     
+    // Close Add/Modify ToDo view when tap save button
+    @IBAction func unwindWhenTapSave(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? AddTaskViewController, let task = sourceViewController.task {
+            
+            if let selectedIndexPath = taskListView.indexPathForSelectedRow {
+                // Update an existing task.
+                tasks[selectedIndexPath.row] = task
+                taskListView.reloadRows(at: [selectedIndexPath], with: .none)
+
+            } else {
+                // Add a new task.
+                let newIndexPath = IndexPath(row: tasks.count, section: 0)
+                
+                tasks.append(task)
+                tasksToShow.append(task.name!)
+                
+                taskListView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
+    }
+
     // MARK: Table View Fucntion
     // Get Table Cell count
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class AddTaskViewController: UIViewController, UITextFieldDelegate {
 
@@ -45,40 +46,37 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
             taskNameField.text = task.name
             taskDueDateField.date = task.dueDate!
             taskMemoField.text = task.memo
+        } else {
+            saveButton.isEnabled = false
         }
     }
 
-    // MARK: Button Tapped Function
-    // Save task action
-    @IBAction func saveButtonTapped(_ sender: Any) {
-        // Get values
-        let taskName = taskNameField.text
-        let taskDueDate = taskDueDateField.date
-        let taskMemo = taskMemoField.text
+    // Prepare tha task data to pass unwind segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
         
         // Use context
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         // Define Task Model
-        let task = Task(context: context)
+        if task == nil {
+            task = Task(context: context)
+        }
         
         // Save input data to DB
-        task.name = taskName
-        task.dueDate = taskDueDate
-        task.memo = taskMemo
+        task?.name = taskNameField.text
+        task?.dueDate = taskDueDateField.date
+        task?.memo = taskMemoField.text
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        
-        // Return to list page
-        dismiss(animated: true, completion: nil)
     }
-    
-    // Cancel and back to list view
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        // Return to list view
-        dismiss(animated: true, completion: nil)
-    }
-    
+
     // MARK: UI Adjust Function
     // Close keyboard when tap screen
     @IBAction func tapScreen(_ sender: UITapGestureRecognizer) {
