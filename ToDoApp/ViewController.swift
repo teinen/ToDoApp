@@ -126,7 +126,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Delete Task Data
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         // Context
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
         
         // Only if Editing Style is 'Delete'
         if editingStyle == .delete {
@@ -159,7 +160,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: CoreData function
     func fetchData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
         let context = appDelegate.persistentContainer.viewContext
         
         do {
