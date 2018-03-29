@@ -13,7 +13,7 @@ class TaskTableViewCell: UITableViewCell {
     // MARK: Properties
     static let reuseIdentifier = "TaskCell"
     
-    @IBOutlet weak var taskLable: UILabel!
+    @IBOutlet weak var taskLabel: UILabel!
     
     // MARK: Initialization
     override func awakeFromNib() {

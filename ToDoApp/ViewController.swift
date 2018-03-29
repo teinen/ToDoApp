@@ -12,10 +12,9 @@ import CoreData
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: Properties
-    @IBOutlet weak var taskListView: UITableView!
+    @IBOutlet var taskListView: UITableView!
     
     var tasks:[Task] = []
-    var tasksToShow:[String] = []
     
     private let segueEditTaskViewController = "SegueEditTaskViewController"
     
@@ -61,11 +60,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let indexPath = taskListView.indexPathForSelectedRow
             
             // Get task name to be edited
-            let editedName = tasksToShow[(indexPath?.row)!]
+            let editedItemId = tasks[(indexPath?.row)!].id
             
             // Create fetch request
             let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "name = %@", editedName)
+            fetchRequest.predicate = NSPredicate(format: "id = %@", editedItemId!)
             
             // Try to get data from CoreData
             do {
@@ -96,7 +95,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let newIndexPath = IndexPath(row: tasks.count, section: 0)
                 
                 tasks.append(task)
-                tasksToShow.append(task.name!)
                 
                 taskListView.insertRows(at: [newIndexPath], with: .automatic)
             }
@@ -115,9 +113,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             fatalError("Unexpected Index Path")
         }
         
-        cell.taskLable.text = "\(tasksToShow[indexPath.row])"
+        let task = tasks[indexPath.row]
+        cell.taskLabel.text = "\(task.name ?? "")"
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     // Delete Task Data
@@ -128,11 +131,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Only if Editing Style is 'Delete'
         if editingStyle == .delete {
             // get item name to delete
-            let deleteName = tasksToShow[indexPath.row]
+            let deleteItemId = tasks[indexPath.row].id
             
             // create fecth request to delete target item
             let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format:"name = %@", deleteName)
+            fetchRequest.predicate = NSPredicate(format:"id = %@", deleteItemId!)
             
             // Delete data
             do {
@@ -155,22 +158,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: CoreData function
     func fetchData() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let context = appDelegate.persistentContainer.viewContext
         
         do {
             // create fetch request
             let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-            
             tasks = try context.fetch(fetchRequest)
-            
-            // Reset tasks info
-            tasksToShow = []
-            
-            // Add task name to show in list view
-            for task in tasks {
-                tasksToShow.append(task.name!)
-            }
-
         } catch {
             print("Data fetching was failed.")
         }

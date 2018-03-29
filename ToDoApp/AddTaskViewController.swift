@@ -70,6 +70,7 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
         }
         
         // Save input data to DB
+        task?.id = NSUUID().uuidString
         task?.name = taskNameField.text
         task?.dueDate = taskDueDateField.date
         task?.memo = taskMemoField.text

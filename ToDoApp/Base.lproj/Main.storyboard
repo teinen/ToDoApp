@@ -39,7 +39,7 @@
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <outlet property="taskLable" destination="PqI-qc-r78" id="Ks0-bR-OW4"/>
+                                    <outlet property="taskLabel" destination="PqI-qc-r78" id="En9-vS-re9"/>
                                     <segue destination="D7G-Wd-dh1" kind="show" identifier="SegueEditTaskViewController" id="clt-ev-Uk2"/>
                                 </connections>
                             </tableViewCell>
@@ -147,7 +147,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="235" y="118"/>
+            <point key="canvasLocation" x="838" y="117"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8AW-Wr-L7L">
@@ -163,7 +163,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQn-Pr-Ien" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1742" y="118"/>
+            <point key="canvasLocation" x="-1746" y="116"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ar0-Gm-cU7">
@@ -181,10 +181,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpG-1u-4PX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-290" y="500"/>
+            <point key="canvasLocation" x="9" y="519"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NDK-0i-Ubg"/>
+        <segue reference="clt-ev-Uk2"/>
     </inferredMetricsTieBreakers>
 </document>

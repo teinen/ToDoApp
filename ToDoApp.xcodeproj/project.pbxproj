@@ -31,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E9801E9A206D06540015F6FF /* ToDoApp 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ToDoApp 2.xcdatamodel"; sourceTree = "<group>"; };
+		E9801EA5206D12450015F6FF /* ToDoApp 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ToDoApp 3.xcdatamodel"; sourceTree = "<group>"; };
 		E9C5A6CE204278B000D7D8E9 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C5A6D1204278B000D7D8E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9C5A6D3204278B000D7D8E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -465,11 +467,14 @@
 		E9C5A6D8204278B000D7D8E9 /* ToDoApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E9801EA5206D12450015F6FF /* ToDoApp 3.xcdatamodel */,
+				E9801E9A206D06540015F6FF /* ToDoApp 2.xcdatamodel */,
 				E9C5A6D9204278B000D7D8E9 /* ToDoApp.xcdatamodel */,
 			);
-			currentVersion = E9C5A6D9204278B000D7D8E9 /* ToDoApp.xcdatamodel */;
+			currentVersion = E9801EA5206D12450015F6FF /* ToDoApp 3.xcdatamodel */;
 			path = ToDoApp.xcdatamodeld;
 			sourceTree = "<group>";
+			usesTabs = 0;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
